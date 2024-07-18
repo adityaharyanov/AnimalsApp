@@ -14,7 +14,7 @@ protocol AnimalRepository {
 
 class AnimalApiRepository: AnimalRepository {
     func getAnimals(by keyword: String) -> Observable<[Animal]> {
-        return HttpService.get(type: [Animal].self, endpoint: AnimalApiService.getAnimals(by: keyword))
+        return HttpService.get(of: [Animal].self, endpoint: AnimalApiService.getAnimals(by: keyword))
             .do(onNext: { print($0.first?.name ?? "No Data") })
     }
 }

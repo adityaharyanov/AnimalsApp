@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
             self.window = UIWindow(windowScene: windowScene)
             window?.overrideUserInterfaceStyle = .dark
-            let vc = ViewController(param: AnimalApiRepository())
+        let vc = ViewController(param: AnimalApiRepository(), image: ImageApiRepository())
             let rootNC = UINavigationController(rootViewController: vc)
 
             self.window?.rootViewController = rootNC

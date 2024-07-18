@@ -18,7 +18,7 @@ protocol ApiService {
 }
 
 class HttpService {
-    static func get<T : Codable>(type : T.Type, endpoint: ApiService) -> Observable<T> {
+    static func get<T : Codable>(of type : T.Type, endpoint: ApiService) -> Observable<T> {
         return Observable<T>.create { (observer) -> Disposable in
             AF.request(endpoint.path, method: endpoint.method, parameters: endpoint.parameters, encoding: URLEncoding.default, headers: endpoint.headers)
                 .validate()

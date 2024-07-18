@@ -225,6 +225,7 @@
 		52D5A8572C47C7FB00BF1352 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52D5A86F2C4892DC00BF1352 /* ImageList.swift */,
 				52D5A8692C488FC100BF1352 /* Image.swift */,
 				52D5A8662C47CFA200BF1352 /* Animal.swift */,
 			);
@@ -266,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				52D5A86B2C488FD100BF1352 /* ImageApiService.swift */,
-				52D5A86F2C4892DC00BF1352 /* ImageList.swift */,
 			);
 			name = Image;
 			sourceTree = "<group>";
