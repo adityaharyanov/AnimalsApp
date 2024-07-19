@@ -22,6 +22,16 @@ extension UIView {
         heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     }
     
+    func anchorSize(width: CGFloat = 0, height: CGFloat = 0) {
+        if width != 0 {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        
+        if height != 0 {
+            heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+    }
+    
     func anchorTop(padding: CGFloat = 0) {
         anchorTop(nil, padding: padding)
     }

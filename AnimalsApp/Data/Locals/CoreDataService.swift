@@ -21,7 +21,7 @@ class CoreDataService: ObservableObject {
     init() {
         container.loadPersistentStores { description, err in
             if let err = err {
- 
+                fatalError(err.localizedDescription)
             }
         }
     }

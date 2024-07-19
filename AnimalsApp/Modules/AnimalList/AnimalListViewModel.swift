@@ -15,55 +15,50 @@ final class AnimalListViewModel {
     private let repository: AnimalRepository
     let disposeBag = DisposeBag()
     
-//    var isLoading = BehaviorRelay<Bool>(value: false)
+    var isLoading = BehaviorRelay<Bool>(value: false)
     var searchText = BehaviorRelay<String>(value: "")
+    var rawAnimals: [Animal] = []
     var animals = BehaviorRelay<[Animal]>(value: [])
     
     init(repository: AnimalRepository) {
         self.repository = repository
+        
+        searchText
+            .subscribe { [weak self] text in
+                guard let self = self else { return }
+                if text.isEmpty {
+                    self.animals.accept(self.rawAnimals)
+                } else {
+                    let filtered = self.rawAnimals.filter { $0.name.contains(text) }
+                    self.animals.accept(filtered)
+                }
+            }
+            
     }
     func load() {
-        Task.init {
+        Task.init { [weak self] in
+            guard let self = self else { return }
             do {
-//                isLoading.accept(true)
+                self.isLoading.accept(true)
                 
-                let result = try await fetchAnimals()
-                animals.accept(result)
-                
-//                if isLoading.value {
-//                    isLoading.accept(false)
-//                }
+                let result = try await self.fetchAnimals()
+                self.rawAnimals = result
+                self.animals.accept(result)
             } catch {
                 print(error.localizedDescription)
-//                if isLoading.value {
-//                    isLoading.accept(false)
-//                }
+            }
+            
+            if self.isLoading.value {
+                self.isLoading.accept(false)
             }
         }
     }
     
     func fetchAnimals() async throws -> [Animal] {
-        
         // initial Value defined
         let animalNames = ["Elephant", "Lion", "Fox", "Dog", "Shark", "Turtle", "Whale", "Penguin"]
         
-        let result = try await withThrowingTaskGroup(of: [Animal].self) { group in
-            for name in animalNames {
-                group.addTask{ [weak self] in
-                    let image = try await self?.repository.getAnimals(by: name)
-                    return image ?? []
-                }
-            }
-            
-            var animals: [Animal] = []
-            for try await result in group {
-                animals.append(contentsOf: result)
-            }
-                    
-            return animals
-        }
-        
-        return result;
+        return try await repository.getAnimals(by: animalNames)
     }
 }
 

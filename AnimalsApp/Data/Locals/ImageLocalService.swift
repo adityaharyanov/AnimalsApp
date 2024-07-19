@@ -9,24 +9,18 @@ import Foundation
 import CoreData
 
 class ImageLocalService {
-    static func save(data: Image) throws {
-        var context = CoreDataService.instance.context
-        var entity = FavouriteImage(context: context)
-        entity.id = Int16(data.id)
-        entity.height = Int16(data.height)
-        entity.width = Int16(data.width)
-        entity.avgColor = data.avgColor
-        entity.url = data.url
-        entity.src = data.src as NSObject
+    private static let context = CoreDataService.instance.context
+    static func save(data: Image) throws -> NSManagedObjectID {
+        let entity = FavouriteImage(from: data, with: context)
         
         try context.save()
+        
+        return entity.objectID
     }
     
     static func fetch() throws -> [FavouriteImage] {
-        var context = CoreDataService.instance.context
-        var entity = FavouriteImage(context: context)
-        
-        var request: NSFetchRequest<FavouriteImage> = FavouriteImage.fetchRequest()
+        let request = FavouriteImage.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:"timestamp", ascending:false)]
         
         let result: [FavouriteImage] = try context.fetch(request)
         
@@ -34,9 +28,11 @@ class ImageLocalService {
     }
     
     static func remove(data: Image) throws {
-        var context = CoreDataService.instance.context
-        var entity = FavouriteImage(context: context)
         
-        context.delete(entity)
+        if let objectID = data.objectID as? NSManagedObjectID {
+            let entity = try context.existingObject(with: objectID)
+            context.delete(entity)
+        }
+        
     }
 }

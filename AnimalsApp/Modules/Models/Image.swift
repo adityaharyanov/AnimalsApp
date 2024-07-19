@@ -14,7 +14,8 @@ struct Image: Codable {
     let url: String
     let avgColor: String
     let src: [String:String]
-    var isFavourited: Bool
+    var isFavourited: Bool?
+    var objectID: NSObject?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,7 +24,6 @@ struct Image: Codable {
         case url
         case avgColor = "avg_color"
         case src
-        case isFavourited
     }
 }
 

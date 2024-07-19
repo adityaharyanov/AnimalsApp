@@ -10,17 +10,41 @@ import RxSwift
 
 protocol ImageRepository {
     func getImages(by keyword: String, page: Int) async throws -> ImageList
-    func addFavourite(data: Image)
-    func removeFavourite(data: Image)
+    func getNextImages(url: String) async throws -> ImageList
+    func getFavourites() -> [Image]
+    func addFavourite(data: Image) throws -> Image
+    func removeFavourite(data: Image) throws -> Image
 }
 
-class ImageApiRepository: ImageRepository {
-    func addFavourite(data: Image) {
-        do {
-            try ImageLocalService.save(data: data)
-        } catch {
-            fatalError()
-        }
+class ImageRepositoryImpl: ImageRepository {
+    func getImages(by keyword: String, page: Int) async throws -> ImageList {
+        let favourites = getFavouriteMap()
+        var result = try await HttpService.get(of: ImageList.self, endpoint: ImageApiService.getImages(by: keyword, page: page))
+        
+        result.photos = result.photos.map({ image in
+            var image = image
+            image.isFavourited = favourites[image.id] != nil
+            image.objectID = favourites[image.id]?.objectID
+            
+            return image
+        })
+        
+        return result
+    }
+    
+    func getNextImages(url: String) async throws -> ImageList {
+        let favourites = getFavouriteMap()
+        var result = try await HttpService.get(of: ImageList.self, endpoint: ImageApiService.getNextImages(url: url))
+        
+        result.photos = result.photos.map({ image in
+            var image = image
+            image.isFavourited = favourites[image.id] != nil
+            image.objectID = favourites[image.id]?.objectID
+            
+            return image
+        })
+        
+        return result
     }
     
     func getFavourites() -> [Image] {
@@ -35,7 +59,9 @@ class ImageApiRepository: ImageRepository {
                     url: item.url ?? "",
                     avgColor: item.avgColor ?? "",
                     src: item.src as? [String:String] ?? [:],
-                    isFavourited: true)
+                    isFavourited: true,
+                    objectID: item.objectID
+                )
             }
             
             return mapped
@@ -44,7 +70,7 @@ class ImageApiRepository: ImageRepository {
         }
     }
     
-    func getFavouriteMap() -> [Int: FavouriteImage] {
+    private func getFavouriteMap() -> [Int: FavouriteImage] {
         do {
             let result = try ImageLocalService.fetch()
             
@@ -58,25 +84,22 @@ class ImageApiRepository: ImageRepository {
         }
     }
     
-    func removeFavourite(data: Image) {
-        do {
-            try ImageLocalService.remove(data: data)
-        } catch {
-            fatalError()
-        }
+    func addFavourite(data: Image) throws -> Image {
+        let objectID = try ImageLocalService.save(data: data)
+        
+        var image = data
+        image.isFavourited = true
+        image.objectID = objectID
+        return image
+        
     }
     
-    func getImages(by keyword: String, page: Int) async throws -> ImageList {
-        var favourites = getFavouriteMap()
-        var result = try await HttpService.get(of: ImageList.self, endpoint: ImageApiService.getImages(by: keyword, page: page))
+    func removeFavourite(data: Image) throws -> Image {
+        try ImageLocalService.remove(data: data)
         
-        result.photos = result.photos.map({ image in
-            var image = image
-            image.isFavourited = favourites[image.id] != nil
-            
-            return image
-        })
-        
-        return result
+        var image = data
+        image.isFavourited = false
+        image.objectID = nil
+        return image
     }
 }

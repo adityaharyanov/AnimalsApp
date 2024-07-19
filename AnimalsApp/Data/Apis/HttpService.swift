@@ -22,6 +22,9 @@ class HttpService {
             AF.request(endpoint.path, method: endpoint.method, parameters: endpoint.parameters, encoding: URLEncoding.default, headers: endpoint.headers)
                 .validate()
                 .responseDecodable(of: type) { (response) in
+                    if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                            print("Data: \(utf8Text)")
+                        }
                     switch response.result {
                     case .success(let result):
                         continuation.resume(returning: result)

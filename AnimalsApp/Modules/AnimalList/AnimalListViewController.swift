@@ -33,6 +33,37 @@ final class AnimalListViewController: UIViewController {
         return tableView
     }()
     
+    lazy var seeFavouriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("See Favourited Image", for: .normal)
+        button.layer.cornerRadius = 8
+        button.backgroundColor = UIColor.systemPink
+        button.tintColor = UIColor.white
+        button.addTarget(self, action: #selector(goFavouriteList), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var container: UIStackView = { [weak self] in
+        guard let self = self else { return UIStackView(arrangedSubviews: []) }
+        
+        var container = UIStackView(arrangedSubviews: [self.searchBar, self.tableView, self.seeFavouriteButton])
+        container.isHidden = true
+        container.axis = .vertical
+        container.alignment = .fill
+        container.distribution = .fill
+        
+        return container
+    }()
+    
+    lazy var loadingView: UIActivityIndicatorView = {
+        let loading = UIActivityIndicatorView(style: .large)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        loading.startAnimating()
+        
+        return loading
+    }()
+    
     //MARK: Life Cycles
     convenience init(viewModel: AnimalListViewModel) {
         self.init()
@@ -55,31 +86,40 @@ final class AnimalListViewController: UIViewController {
     //MARK: Methods
     private func setupView() {
         view.backgroundColor = .systemBackground
-        
-        let container = UIStackView(arrangedSubviews: [searchBar, tableView])
-        container.axis = .vertical
-        container.alignment = .fill
-        container.distribution = .fill
+
+        view.addSubview(loadingView)
+        loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         view.addSubview(container)
         
         container.anchorFill(to: view.safeAreaLayoutGuide)
+        seeFavouriteButton.anchorSize(height: 44)
+        seeFavouriteButton.anchorBottom(padding: 30)
+        seeFavouriteButton.anchorLeading(padding: 12)
+        seeFavouriteButton.anchorTrailing(padding: 12)
     }
     
     func setupBinding() {
-//        searchBar.rx.text
-//            .orEmpty
-//            .bind(to: viewModel.searchText)
-//            .disposed(by: viewModel.disposeBag)
+        searchBar.rx.text
+            .orEmpty
+            .bind(to: viewModel.searchText)
+            .disposed(by: viewModel.disposeBag)
         
         viewModel.animals.bind(to: tableView.rx.items(cellIdentifier: "Cell")) { (_, item, cell) in
             cell.textLabel?.text = item.name
         }.disposed(by: viewModel.disposeBag)
         
-        tableView.rx.modelSelected(String.self)
+        viewModel.isLoading
+            .observe(on: MainScheduler.instance)
+            .subscribe { [weak self] isLoading in
+                self?.container.isHidden = isLoading
+            }
+        
+        tableView.rx.modelSelected(Animal.self)
         .observe(on: MainScheduler.instance)
         .subscribe(onNext: { [weak self] value in
-            self?.goImageList(value)
+            self?.goImageList(value.name)
         }).disposed(by: viewModel.disposeBag)
         
         tableView.rx.itemSelected.subscribe(onNext: { indexPath in
@@ -88,7 +128,12 @@ final class AnimalListViewController: UIViewController {
     }
     
     private func goImageList(_ data: String) {
-//        let cardDetailVC = CardDetailViewController(viewModel: CardDetailViewModel(data))
-//        navigationController?.pushViewController(cardDetailVC, animated: true)
+        let imageListVC = ImageListViewController(viewModel: ImageListViewModel(data: data, repository: ImageRepositoryImpl()))
+        navigationController?.pushViewController(imageListVC, animated: true)
+    }
+    
+    @objc private func goFavouriteList() {
+        let imageListVC = ImageListViewController(viewModel: ImageListViewModel(repository: ImageRepositoryImpl()))
+        navigationController?.pushViewController(imageListVC, animated: true)
     }
 }

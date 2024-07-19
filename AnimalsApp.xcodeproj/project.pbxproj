@@ -37,6 +37,8 @@
 		52D5A8952C49EC8900BF1352 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8942C49EC8900BF1352 /* ImageListViewController.swift */; };
 		52D5A8972C49EC9800BF1352 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8962C49EC9800BF1352 /* ImageListViewModel.swift */; };
 		52D5A8992C49F62700BF1352 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8982C49F62700BF1352 /* ImageViewCell.swift */; };
+		52D5A89B2C4A1FCF00BF1352 /* Rx+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A89A2C4A1FCF00BF1352 /* Rx+Extension.swift */; };
+		52D5A89D2C4A232400BF1352 /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A89C2C4A232400BF1352 /* FullImageViewController.swift */; };
 		689BCD8A1D83A5644847A0F3 /* Pods_AnimalsApp_AnimalsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A98B6D5FBA2B1D2197C3B37 /* Pods_AnimalsApp_AnimalsAppUITests.framework */; };
 		F6B06B75838AA69C30BD25D5 /* Pods_AnimalsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCEE14DD8C52B209FE53079 /* Pods_AnimalsApp.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,8 @@
 		52D5A8942C49EC8900BF1352 /* ImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
 		52D5A8962C49EC9800BF1352 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
 		52D5A8982C49F62700BF1352 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		52D5A89A2C4A1FCF00BF1352 /* Rx+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extension.swift"; sourceTree = "<group>"; };
+		52D5A89C2C4A232400BF1352 /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		6E1E0DC96E0BEE4002531090 /* Pods-AnimalsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalsApp.debug.xcconfig"; path = "Target Support Files/Pods-AnimalsApp/Pods-AnimalsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		84FAE19149F6F41B0865ED22 /* Pods-AnimalsApp-AnimalsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalsApp-AnimalsAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalsApp-AnimalsAppUITests/Pods-AnimalsApp-AnimalsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		872D9E5E5A51D1022F56AD3D /* Pods-AnimalsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalsAppTests/Pods-AnimalsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				52D5A8902C49E72E00BF1352 /* Commons */,
 				52D5A85A2C47CA1C00BF1352 /* AnimalList */,
 				52D5A8932C49EC7300BF1352 /* ImageList */,
+				52D5A89E2C4A234600BF1352 /* FullImage */,
 				52D5A8572C47C7FB00BF1352 /* Models */,
 			);
 			path = Modules;
@@ -310,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				52D5A8912C49E73E00BF1352 /* UIView+Extension.swift */,
+				52D5A89A2C4A1FCF00BF1352 /* Rx+Extension.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -322,6 +328,14 @@
 				52D5A8982C49F62700BF1352 /* ImageViewCell.swift */,
 			);
 			path = ImageList;
+			sourceTree = "<group>";
+		};
+		52D5A89E2C4A234600BF1352 /* FullImage */ = {
+			isa = PBXGroup;
+			children = (
+				52D5A89C2C4A232400BF1352 /* FullImageViewController.swift */,
+			);
+			path = FullImage;
 			sourceTree = "<group>";
 		};
 		B15968206D7A0D50A14BC962 /* Frameworks */ = {
@@ -597,12 +611,14 @@
 				52D5A86C2C488FD100BF1352 /* ImageApiService.swift in Sources */,
 				52D5A8952C49EC8900BF1352 /* ImageListViewController.swift in Sources */,
 				52D5A86E2C48915A00BF1352 /* ImageRepository.swift in Sources */,
+				52D5A89D2C4A232400BF1352 /* FullImageViewController.swift in Sources */,
 				52D5A8672C47CFA200BF1352 /* Animal.swift in Sources */,
 				52D5A8922C49E73E00BF1352 /* UIView+Extension.swift in Sources */,
 				52D5A8602C47CAD700BF1352 /* HttpService.swift in Sources */,
 				52D5A8972C49EC9800BF1352 /* ImageListViewModel.swift in Sources */,
 				52D5A8622C47CDC800BF1352 /* AnimalApiService.swift in Sources */,
 				52D5A8702C4892DC00BF1352 /* ImageList.swift in Sources */,
+				52D5A89B2C4A1FCF00BF1352 /* Rx+Extension.swift in Sources */,
 				52D5A86A2C488FC100BF1352 /* Image.swift in Sources */,
 				52D5A8212C47C1D500BF1352 /* SceneDelegate.swift in Sources */,
 				52D5A8992C49F62700BF1352 /* ImageViewCell.swift in Sources */,
