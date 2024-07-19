@@ -11,7 +11,7 @@ struct ImageList: Codable {
     let totalResults: Int
     let page: Int
     let perPage: Int
-    let photos: [Image]
+    var photos: [Image]
     let nextPageUrl: String
     
     enum CodingKeys: String, CodingKey {

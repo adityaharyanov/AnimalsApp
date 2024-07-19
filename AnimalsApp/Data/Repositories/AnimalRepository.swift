@@ -6,16 +6,14 @@
 //
 
 import Foundation
-import RxSwift
 
 protocol AnimalRepository {
-    func getAnimals(by keyword: String) -> Observable<[Animal]>
+    func getAnimals(by keyword: String) async throws -> [Animal]
 }
 
 class AnimalApiRepository: AnimalRepository {
-    func getAnimals(by keyword: String) -> Observable<[Animal]> {
-        return HttpService.get(of: [Animal].self, endpoint: AnimalApiService.getAnimals(by: keyword))
-            .do(onNext: { print($0.first?.name ?? "No Data") })
+    func getAnimals(by keyword: String) async throws -> [Animal] {
+        return try await HttpService.get(of: [Animal].self, endpoint: AnimalApiService.getAnimals(by: keyword))
     }
 }
 

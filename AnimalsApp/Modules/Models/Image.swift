@@ -12,10 +12,19 @@ struct Image: Codable {
     let width: Int
     let height: Int
     let url: String
-    let photographer: String
-    let photographer_url: String
-    let avg_color: String
+    let avgColor: String
     let src: [String:String]
+    var isFavourited: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case width
+        case height
+        case url
+        case avgColor = "avg_color"
+        case src
+        case isFavourited
+    }
 }
 
 //{

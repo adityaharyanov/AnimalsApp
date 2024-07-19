@@ -9,12 +9,14 @@ import Foundation
 import RxSwift
 
 protocol ImageRepository {
-    func getImages(by keyword: String, page: Int) -> Observable<ImageList>
+    func getImages(by keyword: String, page: Int) async throws -> ImageList
+
 }
 
 class ImageApiRepository: ImageRepository {
-    func getImages(by keyword: String, page: Int) -> Observable<ImageList> {
-        return HttpService.get(of: ImageList.self, endpoint: ImageApiService.getImages(by: keyword, page: page))
-            .do(onNext: { print($0.photos.first?.url ?? "No Data") })
+
+    func getImages(by keyword: String, page: Int) async throws -> ImageList {
+        var result = try await HttpService.get(of: ImageList.self, endpoint: ImageApiService.getImages(by: keyword, page: page))
+        return result
     }
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import RxSwift
 
 
 protocol ApiService {
@@ -18,32 +17,30 @@ protocol ApiService {
 }
 
 class HttpService {
-    static func get<T : Codable>(of type : T.Type, endpoint: ApiService) -> Observable<T> {
-        return Observable<T>.create { (observer) -> Disposable in
+    static func get<T : Codable>(of type : T.Type, endpoint: ApiService) async throws -> T {
+        return try await withCheckedThrowingContinuation { continuation in
             AF.request(endpoint.path, method: endpoint.method, parameters: endpoint.parameters, encoding: URLEncoding.default, headers: endpoint.headers)
                 .validate()
                 .responseDecodable(of: type) { (response) in
                     switch response.result {
                     case .success(let result):
-                        observer.onNext(result)
-                        observer.onCompleted()
+                        continuation.resume(returning: result)
                         
                     case .failure(let error):
-                            switch response.response?.statusCode {
-                            case 403:
-                                observer.onError(ApiError.forbidden)
-                            case 404:
-                                observer.onError(ApiError.notFound)
-                            case 409:
-                                observer.onError(ApiError.conflict)
-                            case 500:
-                                observer.onError(ApiError.internalServerError)
-                            default:
-                                observer.onError(error)
-                            }
+                        switch response.response?.statusCode {
+                        case 403:
+                            continuation.resume(throwing: ApiError.forbidden)
+                        case 404:
+                            continuation.resume(throwing: ApiError.notFound)
+                        case 409:
+                            continuation.resume(throwing: ApiError.conflict)
+                        case 500:
+                            continuation.resume(throwing: ApiError.internalServerError)
+                        default:
+                            continuation.resume(throwing: error)
+                        }
                     }
                 }
-                return Disposables.create()
         }
     }
 }
