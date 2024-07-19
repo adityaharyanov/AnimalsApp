@@ -10,7 +10,6 @@
 		14D814312EB15FE28493C0AA /* Pods_AnimalsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964BE19CB1C24959EA13C941 /* Pods_AnimalsAppTests.framework */; };
 		52D5A81F2C47C1D500BF1352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A81E2C47C1D500BF1352 /* AppDelegate.swift */; };
 		52D5A8212C47C1D500BF1352 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8202C47C1D500BF1352 /* SceneDelegate.swift */; };
-		52D5A8232C47C1D500BF1352 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8222C47C1D500BF1352 /* ViewController.swift */; };
 		52D5A8262C47C1D500BF1352 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 52D5A8252C47C1D500BF1352 /* Base */; };
 		52D5A8292C47C1D500BF1352 /* AnimalsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8272C47C1D500BF1352 /* AnimalsApp.xcdatamodeld */; };
 		52D5A82B2C47C1D700BF1352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D5A82A2C47C1D700BF1352 /* Assets.xcassets */; };
@@ -30,6 +29,14 @@
 		52D5A8702C4892DC00BF1352 /* ImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A86F2C4892DC00BF1352 /* ImageList.swift */; };
 		52D5A8752C48964A00BF1352 /* AnimalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8742C48964A00BF1352 /* AnimalTest.swift */; };
 		52D5A8792C48AF8100BF1352 /* AnimalRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8782C48AF8100BF1352 /* AnimalRepositoryTest.swift */; };
+		52D5A87D2C49CD4500BF1352 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A87C2C49CD4500BF1352 /* CoreDataService.swift */; };
+		52D5A88C2C49D10500BF1352 /* FavouriteImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A88A2C49D10500BF1352 /* FavouriteImage+CoreDataClass.swift */; };
+		52D5A88D2C49D10500BF1352 /* FavouriteImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A88B2C49D10500BF1352 /* FavouriteImage+CoreDataProperties.swift */; };
+		52D5A88F2C49D97400BF1352 /* ImageLocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A88E2C49D97400BF1352 /* ImageLocalService.swift */; };
+		52D5A8922C49E73E00BF1352 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8912C49E73E00BF1352 /* UIView+Extension.swift */; };
+		52D5A8952C49EC8900BF1352 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8942C49EC8900BF1352 /* ImageListViewController.swift */; };
+		52D5A8972C49EC9800BF1352 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8962C49EC9800BF1352 /* ImageListViewModel.swift */; };
+		52D5A8992C49F62700BF1352 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5A8982C49F62700BF1352 /* ImageViewCell.swift */; };
 		689BCD8A1D83A5644847A0F3 /* Pods_AnimalsApp_AnimalsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A98B6D5FBA2B1D2197C3B37 /* Pods_AnimalsApp_AnimalsAppUITests.framework */; };
 		F6B06B75838AA69C30BD25D5 /* Pods_AnimalsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCEE14DD8C52B209FE53079 /* Pods_AnimalsApp.framework */; };
 /* End PBXBuildFile section */
@@ -58,7 +65,6 @@
 		52D5A81B2C47C1D500BF1352 /* AnimalsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D5A81E2C47C1D500BF1352 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D5A8202C47C1D500BF1352 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		52D5A8222C47C1D500BF1352 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52D5A8252C47C1D500BF1352 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52D5A8282C47C1D500BF1352 /* AnimalsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalsApp.xcdatamodel; sourceTree = "<group>"; };
 		52D5A82A2C47C1D700BF1352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +87,14 @@
 		52D5A86F2C4892DC00BF1352 /* ImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageList.swift; sourceTree = "<group>"; };
 		52D5A8742C48964A00BF1352 /* AnimalTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTest.swift; sourceTree = "<group>"; };
 		52D5A8782C48AF8100BF1352 /* AnimalRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalRepositoryTest.swift; sourceTree = "<group>"; };
+		52D5A87C2C49CD4500BF1352 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		52D5A88A2C49D10500BF1352 /* FavouriteImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteImage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		52D5A88B2C49D10500BF1352 /* FavouriteImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		52D5A88E2C49D97400BF1352 /* ImageLocalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLocalService.swift; sourceTree = "<group>"; };
+		52D5A8912C49E73E00BF1352 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		52D5A8942C49EC8900BF1352 /* ImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
+		52D5A8962C49EC9800BF1352 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
+		52D5A8982C49F62700BF1352 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		6E1E0DC96E0BEE4002531090 /* Pods-AnimalsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalsApp.debug.xcconfig"; path = "Target Support Files/Pods-AnimalsApp/Pods-AnimalsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		84FAE19149F6F41B0865ED22 /* Pods-AnimalsApp-AnimalsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalsApp-AnimalsAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalsApp-AnimalsAppUITests/Pods-AnimalsApp-AnimalsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		872D9E5E5A51D1022F56AD3D /* Pods-AnimalsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalsAppTests/Pods-AnimalsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,7 +160,6 @@
 				52D5A8522C47C78500BF1352 /* Modules */,
 				52D5A81E2C47C1D500BF1352 /* AppDelegate.swift */,
 				52D5A8202C47C1D500BF1352 /* SceneDelegate.swift */,
-				52D5A8222C47C1D500BF1352 /* ViewController.swift */,
 				52D5A8242C47C1D500BF1352 /* Main.storyboard */,
 				52D5A82A2C47C1D700BF1352 /* Assets.xcassets */,
 				52D5A82C2C47C1D700BF1352 /* LaunchScreen.storyboard */,
@@ -188,9 +201,9 @@
 		52D5A8522C47C78500BF1352 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				52D5A8902C49E72E00BF1352 /* Commons */,
 				52D5A85A2C47CA1C00BF1352 /* AnimalList */,
-				52D5A8592C47C80B00BF1352 /* Views */,
-				52D5A8582C47C80100BF1352 /* ViewModels */,
+				52D5A8932C49EC7300BF1352 /* ImageList */,
 				52D5A8572C47C7FB00BF1352 /* Models */,
 			);
 			path = Modules;
@@ -209,6 +222,10 @@
 		52D5A8542C47C7C900BF1352 /* Locals */ = {
 			isa = PBXGroup;
 			children = (
+				52D5A88A2C49D10500BF1352 /* FavouriteImage+CoreDataClass.swift */,
+				52D5A88B2C49D10500BF1352 /* FavouriteImage+CoreDataProperties.swift */,
+				52D5A87C2C49CD4500BF1352 /* CoreDataService.swift */,
+				52D5A88E2C49D97400BF1352 /* ImageLocalService.swift */,
 			);
 			path = Locals;
 			sourceTree = "<group>";
@@ -230,20 +247,6 @@
 				52D5A8662C47CFA200BF1352 /* Animal.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		52D5A8582C47C80100BF1352 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		52D5A8592C47C80B00BF1352 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		52D5A85A2C47CA1C00BF1352 /* AnimalList */ = {
@@ -301,6 +304,24 @@
 				52D5A8782C48AF8100BF1352 /* AnimalRepositoryTest.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		52D5A8902C49E72E00BF1352 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				52D5A8912C49E73E00BF1352 /* UIView+Extension.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		52D5A8932C49EC7300BF1352 /* ImageList */ = {
+			isa = PBXGroup;
+			children = (
+				52D5A8942C49EC8900BF1352 /* ImageListViewController.swift */,
+				52D5A8962C49EC9800BF1352 /* ImageListViewModel.swift */,
+				52D5A8982C49F62700BF1352 /* ImageViewCell.swift */,
+			);
+			path = ImageList;
 			sourceTree = "<group>";
 		};
 		B15968206D7A0D50A14BC962 /* Frameworks */ = {
@@ -565,20 +586,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D5A8232C47C1D500BF1352 /* ViewController.swift in Sources */,
 				52D5A8292C47C1D500BF1352 /* AnimalsApp.xcdatamodeld in Sources */,
 				52D5A8642C47CF0200BF1352 /* AnimalRepository.swift in Sources */,
 				52D5A85E2C47CA6100BF1352 /* AnimalListViewModel.swift in Sources */,
+				52D5A88C2C49D10500BF1352 /* FavouriteImage+CoreDataClass.swift in Sources */,
+				52D5A88D2C49D10500BF1352 /* FavouriteImage+CoreDataProperties.swift in Sources */,
+				52D5A87D2C49CD4500BF1352 /* CoreDataService.swift in Sources */,
 				52D5A85C2C47CA5200BF1352 /* AnimalListViewController.swift in Sources */,
 				52D5A81F2C47C1D500BF1352 /* AppDelegate.swift in Sources */,
 				52D5A86C2C488FD100BF1352 /* ImageApiService.swift in Sources */,
+				52D5A8952C49EC8900BF1352 /* ImageListViewController.swift in Sources */,
 				52D5A86E2C48915A00BF1352 /* ImageRepository.swift in Sources */,
 				52D5A8672C47CFA200BF1352 /* Animal.swift in Sources */,
+				52D5A8922C49E73E00BF1352 /* UIView+Extension.swift in Sources */,
 				52D5A8602C47CAD700BF1352 /* HttpService.swift in Sources */,
+				52D5A8972C49EC9800BF1352 /* ImageListViewModel.swift in Sources */,
 				52D5A8622C47CDC800BF1352 /* AnimalApiService.swift in Sources */,
 				52D5A8702C4892DC00BF1352 /* ImageList.swift in Sources */,
 				52D5A86A2C488FC100BF1352 /* Image.swift in Sources */,
 				52D5A8212C47C1D500BF1352 /* SceneDelegate.swift in Sources */,
+				52D5A8992C49F62700BF1352 /* ImageViewCell.swift in Sources */,
+				52D5A88F2C49D97400BF1352 /* ImageLocalService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,7 +716,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -745,7 +773,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
